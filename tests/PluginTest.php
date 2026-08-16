@@ -37,7 +37,7 @@ describe('Plugin Manifest', function () {
 
         foreach ($manifest['bridge_functions'] as $function) {
             expect($function)->toHaveKeys(['name']);
-            expect($function)->toHaveAnyKeys(['android', 'ios']);
+            expect(array_intersect_key($function, array_flip(['android', 'ios'])))->not->toBeEmpty();
             expect($function['name'])->toStartWith('FirebaseCrashlytics.');
         }
     });

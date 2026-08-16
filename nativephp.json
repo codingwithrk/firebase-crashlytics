@@ -14,8 +14,8 @@
         "email": "pappalarajkumar@gmail.com",
         "url": "https://codingwithrk.com"
     },
-    "homepage": "",
-    "repository": "",
+    "homepage": "https://github.com/codingwithrk/firebase-crashlytics",
+    "repository": "https://github.com/codingwithrk/firebase-crashlytics",
     "funding": [],
     "platforms": [
         "android",
