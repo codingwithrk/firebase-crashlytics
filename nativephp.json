@@ -1,0 +1,129 @@
+{
+    "name": "codingwithrk/firebase-crashlytics",
+    "version": "1.0.0",
+    "description": "A NativePHP Mobile plugin for Firebase Crashlytics. Records fatal and non-fatal errors, breadcrumb logs, user identifiers and custom keys, and reports them to the Firebase console - modeled after the firebase_crashlytics Flutter package.",
+    "namespace": "FirebaseCrashlytics",
+    "keywords": ["firebase", "crashlytics", "crash-reporting", "error-tracking", "monitoring"],
+    "category": "utilities",
+    "license": "MIT",
+    "pricing": {
+        "type": "free"
+    },
+    "author": {
+        "name": "CodingwithRK",
+        "email": "pappalarajkumar@gmail.com",
+        "url": "https://codingwithrk.com"
+    },
+    "homepage": "",
+    "repository": "",
+    "funding": [],
+    "platforms": [
+        "android",
+        "ios"
+    ],
+    "icon": "resources/icon.png",
+    "screenshots": [],
+    "bridge_functions": [
+        {
+            "name": "FirebaseCrashlytics.RecordError",
+            "android": "com.codingwithrk.plugins.firebase_crashlytics.FirebaseCrashlyticsFunctions.RecordError",
+            "ios": "FirebaseCrashlyticsFunctions.RecordError",
+            "description": "Records a caught exception/error with Crashlytics"
+        },
+        {
+            "name": "FirebaseCrashlytics.Log",
+            "android": "com.codingwithrk.plugins.firebase_crashlytics.FirebaseCrashlyticsFunctions.Log",
+            "ios": "FirebaseCrashlyticsFunctions.Log",
+            "description": "Adds a custom log message to be included in the next crash/error report"
+        },
+        {
+            "name": "FirebaseCrashlytics.SetUserId",
+            "android": "com.codingwithrk.plugins.firebase_crashlytics.FirebaseCrashlyticsFunctions.SetUserId",
+            "ios": "FirebaseCrashlyticsFunctions.SetUserId",
+            "description": "Sets a user identifier that will be associated with subsequent crash reports"
+        },
+        {
+            "name": "FirebaseCrashlytics.SetCustomKey",
+            "android": "com.codingwithrk.plugins.firebase_crashlytics.FirebaseCrashlyticsFunctions.SetCustomKey",
+            "ios": "FirebaseCrashlyticsFunctions.SetCustomKey",
+            "description": "Sets a custom key/value pair that will be associated with subsequent crash reports"
+        },
+        {
+            "name": "FirebaseCrashlytics.Crash",
+            "android": "com.codingwithrk.plugins.firebase_crashlytics.FirebaseCrashlyticsFunctions.Crash",
+            "ios": "FirebaseCrashlyticsFunctions.Crash",
+            "description": "Forces an immediate, unrecoverable native crash for testing your Crashlytics integration"
+        },
+        {
+            "name": "FirebaseCrashlytics.SetCollectionEnabled",
+            "android": "com.codingwithrk.plugins.firebase_crashlytics.FirebaseCrashlyticsFunctions.SetCollectionEnabled",
+            "ios": "FirebaseCrashlyticsFunctions.SetCollectionEnabled",
+            "description": "Enables or disables automatic crash report collection"
+        },
+        {
+            "name": "FirebaseCrashlytics.IsCollectionEnabled",
+            "android": "com.codingwithrk.plugins.firebase_crashlytics.FirebaseCrashlyticsFunctions.IsCollectionEnabled",
+            "ios": "FirebaseCrashlyticsFunctions.IsCollectionEnabled",
+            "description": "Returns whether automatic crash report collection is enabled"
+        },
+        {
+            "name": "FirebaseCrashlytics.CheckForUnsentReports",
+            "android": "com.codingwithrk.plugins.firebase_crashlytics.FirebaseCrashlyticsFunctions.CheckForUnsentReports",
+            "ios": "FirebaseCrashlyticsFunctions.CheckForUnsentReports",
+            "description": "Checks whether there are any unsent crash reports on disk"
+        },
+        {
+            "name": "FirebaseCrashlytics.SendUnsentReports",
+            "android": "com.codingwithrk.plugins.firebase_crashlytics.FirebaseCrashlyticsFunctions.SendUnsentReports",
+            "ios": "FirebaseCrashlyticsFunctions.SendUnsentReports",
+            "description": "Uploads any unsent crash reports to Firebase"
+        },
+        {
+            "name": "FirebaseCrashlytics.DeleteUnsentReports",
+            "android": "com.codingwithrk.plugins.firebase_crashlytics.FirebaseCrashlyticsFunctions.DeleteUnsentReports",
+            "ios": "FirebaseCrashlyticsFunctions.DeleteUnsentReports",
+            "description": "Deletes any unsent crash reports from disk"
+        },
+        {
+            "name": "FirebaseCrashlytics.DidCrashOnPreviousExecution",
+            "android": "com.codingwithrk.plugins.firebase_crashlytics.FirebaseCrashlyticsFunctions.DidCrashOnPreviousExecution",
+            "ios": "FirebaseCrashlyticsFunctions.DidCrashOnPreviousExecution",
+            "description": "Returns whether the app crashed during its previous execution"
+        }
+    ],
+
+    "android": {
+        "min_version": "29",
+        "permissions": [
+            "android.permission.INTERNET",
+            "android.permission.ACCESS_NETWORK_STATE"
+        ],
+        "gradle_plugins": [
+            {
+                "id": "com.google.firebase.crashlytics",
+                "version": "3.0.7"
+            }
+        ],
+        "dependencies": {
+            "implementation": [
+                "com.google.firebase:firebase-crashlytics"
+            ]
+        }
+    },
+
+    "ios": {
+        "min_version": "18.0",
+        "info_plist": {},
+        "dependencies": {
+            "pods": [
+                {"name": "Firebase/Crashlytics", "version": "~> 12.0"}
+            ]
+        }
+    },
+
+    "service_provider": "Codingwithrk\\FirebaseCrashlytics\\FirebaseCrashlyticsServiceProvider",
+
+    "hooks": {
+        "pre_compile": "nativephp:firebase-crashlytics:apply-gradle-plugin"
+    }
+}
